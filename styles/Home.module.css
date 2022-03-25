@@ -1,0 +1,112 @@
+.mainTitle {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 65px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.08em;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+/*Card Component*/
+.cardCont {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px;
+  width: 414px;
+  background: #f8f9fa;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+}
+.cardTitle {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: 0.08em;
+  color: #313131;
+  margin: 8px 0px;
+}
+.cardDescription {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  align-items: center;
+  letter-spacing: 0.08em;
+  color: #757575;
+  margin: 8px 0px;
+}
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  border-left: 8px solid;
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+.iconContainer {
+  background-color: #3da623;
+  border-radius: 50%;
+  padding: 10px;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.cardTextCont {
+  background: #ffffff;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04),
+    0px 0px 1px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  padding: 16px 24px;
+  margin-bottom: 15px;
+  /* position: relative; */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.itemText {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+  margin: 8px 0px;
+  color: #000000;
+  padding: 0px 8px;
+}
+.cardDots {
+  /* position: absolute;
+  right: 8px;
+  top: 19px;*/
+  color: #c4c4c4;
+  margin: 8px 0px;
+  cursor: pointer;
+}
+.optionitemText {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+}
+.optionCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin: 8px 0px;
+  padding: 4px 8px;
+}
+.optionCont:hover {
+  background-color: #80808017;
+}
+/*End Card Compnent*/
