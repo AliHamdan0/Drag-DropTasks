@@ -8,30 +8,23 @@ import { Tasks } from "../helpers/endPoints";
 import { useQuery } from "react-query";
 import axios from "axios";
 export default function Home() {
+  const [cardData, setCardData] = useState(null);
   const { isLoading, isFetching, data, isError, error } = useQuery(
     "Tasks",
     () => {
-      return axios.get(GetTasks);
+      return axios.get(Tasks);
+    },
+    {
+      onSuccess: (data) => {
+        setCardData({
+          cardOne: data?.data?.filter((task) => task.status == "todo"),
+          cardTwo: data?.data?.filter((task) => task.status == "doing"),
+          cardThree: data?.data?.filter((task) => task.status == "done"),
+          cardFour: data?.data?.filter((task) => task.status == "archive"),
+        });
+      },
     }
   );
-  const [cardData, setCardData] = useState({
-    cardOne: [
-      { id: "1", content: "oneItem" },
-      { id: "2", content: "twoItem" },
-    ],
-    cardTwo: [
-      { id: "3", content: "threeItem" },
-      { id: "4", content: "fourItem" },
-    ],
-    cardThree: [
-      { id: "5", content: "fiveItem" },
-      { id: "6", content: "sixItem" },
-    ],
-    cardFour: [
-      { id: "7", content: "sevenItem" },
-      { id: "8", content: "eightItem" },
-    ],
-  });
 
   const getCardPropert = (id) => {
     if (id == "todo") return "cardOne";
@@ -125,36 +118,38 @@ export default function Home() {
       <h1 className={style.mainTitle}>Todo List</h1>
       <Container maxWidth="xl">
         <DragDropContext onDragEnd={onDragEnd}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={4} lg={3}>
-              <Card
-                bcolor={checkColor("todo")}
-                idCard="todo"
-                data={cardData.cardOne}
-              />
+          {cardData != null && (
+            <Grid container spacing={3}>
+              <Grid item xs={12} md={4} lg={3}>
+                <Card
+                  bcolor={checkColor("todo")}
+                  idCard="todo"
+                  data={cardData.cardOne}
+                />
+              </Grid>
+              <Grid item xs={12} md={4} lg={3}>
+                <Card
+                  bcolor={checkColor("doing")}
+                  idCard="doing"
+                  data={cardData.cardTwo}
+                />
+              </Grid>
+              <Grid item xs={12} md={4} lg={3}>
+                <Card
+                  bcolor={checkColor("done")}
+                  idCard="done"
+                  data={cardData.cardThree}
+                />
+              </Grid>
+              <Grid item xs={12} md={4} lg={3}>
+                <Card
+                  bcolor={checkColor("archive")}
+                  idCard="archive"
+                  data={cardData.cardFour}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={4} lg={3}>
-              <Card
-                bcolor={checkColor("doing")}
-                idCard="doing"
-                data={cardData.cardTwo}
-              />
-            </Grid>
-            <Grid item xs={12} md={4} lg={3}>
-              <Card
-                bcolor={checkColor("done")}
-                idCard="done"
-                data={cardData.cardThree}
-              />
-            </Grid>
-            <Grid item xs={12} md={4} lg={3}>
-              <Card
-                bcolor={checkColor("archive")}
-                idCard="archive"
-                data={cardData.cardFour}
-              />
-            </Grid>
-          </Grid>
+          )}
         </DragDropContext>
       </Container>
     </div>

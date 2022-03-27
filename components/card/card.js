@@ -47,14 +47,14 @@ function Card(props) {
           >
             {data?.map((item, index) => {
               return (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
+                <Draggable key={item._id} draggableId={item._id} index={index}>
                   {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      <Item data={item?.content} />
+                      <Item data={item} />
                     </div>
                   )}
                 </Draggable>

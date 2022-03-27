@@ -25,8 +25,13 @@ export default function Item({ data }) {
     <>
       <div className={style.cardTextCont}>
         <div>
-          <span className={style.itemText}>{data}</span>
-          {/* <p className={style.itemText}>{data?.subject}</p> */}
+          <span className={style.itemText}>{data?.title}</span>
+          <p
+            className={style.itemText}
+            style={{ margin: "2px 0px", fontSize: "14px" }}
+          >
+            {data?.subject}
+          </p>
         </div>
         <MoreVertIcon className={style.cardDots} onClick={handleClick} />
         <Popover
