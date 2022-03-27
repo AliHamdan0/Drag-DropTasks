@@ -14,11 +14,13 @@
     "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.5.2",
     "@mui/styles": "^5.5.1",
+    "axios": "^0.26.1",
     "next": "12.1.1",
     "react": "17.0.2",
     "react-beautiful-dnd": "^13.1.0",
     "react-dom": "17.0.2",
-    "react-query": "^3.34.17"
+    "react-query": "^3.34.19",
+    "sweetalert2": "^11.4.7"
   },
   "devDependencies": {
     "eslint": "8.11.0",

@@ -109,3 +109,67 @@
   background-color: #80808017;
 }
 /*End Card Compnent*/
+/*Start Modules*/
+.addModuleCont {
+  background: #f8f9fa;
+  width: 95%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 37px;
+}
+@media (min-width: 899px) {
+  .addModuleCont {
+    width: 50%;
+  }
+}
+.titleModule {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 33px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.08em;
+  color: #000000;
+  margin: 4px 0px;
+}
+.moduleInput {
+  width: 100%;
+  height: 51px;
+  background: #ffffff;
+  border-radius: 7px;
+  padding: 4px 10px;
+  margin-bottom: 8px;
+  border: none;
+  font-size: 18px;
+}
+.moduleArea {
+  background: #ffffff;
+  border-radius: 7px;
+  padding: 4px 10px;
+  margin-bottom: 18px;
+  resize: none;
+  border: none;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  padding: 8px;
+}
+.addModButton {
+  width: 107px;
+  height: 35px;
+  background: #5eb149;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  margin-left: auto;
+  cursor: pointer;
+}
+/*End Modules*/

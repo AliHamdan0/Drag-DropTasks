@@ -4,8 +4,16 @@ import Card from "../components/card/card";
 import { useState } from "react";
 import { Grid, Container } from "@mui/material";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-
+import { Tasks } from "../helpers/endPoints";
+import { useQuery } from "react-query";
+import axios from "axios";
 export default function Home() {
+  const { isLoading, isFetching, data, isError, error } = useQuery(
+    "Tasks",
+    () => {
+      return axios.get(GetTasks);
+    }
+  );
   const [cardData, setCardData] = useState({
     cardOne: [
       { id: "1", content: "oneItem" },
@@ -26,10 +34,10 @@ export default function Home() {
   });
 
   const getCardPropert = (id) => {
-    if (id == "c1") return "cardOne";
-    else if (id == "c2") return "cardTwo";
-    else if (id == "c3") return "cardThree";
-    else if (id == "c4") return "cardFour";
+    if (id == "todo") return "cardOne";
+    else if (id == "doing") return "cardTwo";
+    else if (id == "done") return "cardThree";
+    else if (id == "archive") return "cardFour";
   };
 
   // a little function to help us with reordering the result
@@ -41,13 +49,13 @@ export default function Home() {
   };
   const getList = (id) => {
     // return the card's array
-    if (id == "c1") {
+    if (id == "todo") {
       return cardData.cardOne;
-    } else if (id == "c2") {
+    } else if (id == "doing") {
       return cardData.cardTwo;
-    } else if (id == "c3") {
+    } else if (id == "done") {
       return cardData.cardThree;
-    } else if (id == "c4") {
+    } else if (id == "archive") {
       return cardData.cardFour;
     }
   };
@@ -96,7 +104,22 @@ export default function Home() {
       });
     }
   };
+  const checkColor = (status) => {
+    switch (status) {
+      case "todo":
+        return "#F66568";
+      case "doing":
+        return "#FFC773";
+      case "done":
+        return "#6BE795";
+      case "archive":
+        return "#7389FF";
+      default:
+        return "black";
+    }
+  };
   console.log("finalResult", cardData);
+  console.log("data", data?.data);
   return (
     <div>
       <h1 className={style.mainTitle}>Todo List</h1>
@@ -104,16 +127,32 @@ export default function Home() {
         <DragDropContext onDragEnd={onDragEnd}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={4} lg={3}>
-              <Card bcolor="#F66568" id="c1" data={cardData.cardOne} />
+              <Card
+                bcolor={checkColor("todo")}
+                idCard="todo"
+                data={data?.data?.filter((task) => task.status == "todo")}
+              />
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
-              <Card bcolor="#F66568" id="c2" data={cardData.cardTwo} />
+              <Card
+                bcolor={checkColor("doing")}
+                idCard="doing"
+                data={data?.data?.filter((task) => task.status == "doing")}
+              />
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
-              <Card bcolor="#F66568" id="c3" data={cardData.cardThree} />
+              <Card
+                bcolor={checkColor("done")}
+                idCard="done"
+                data={data?.data?.filter((task) => task.status == "done")}
+              />
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
-              <Card bcolor="#F66568" id="c4" data={cardData.cardFour} />
+              <Card
+                bcolor={checkColor("archive")}
+                idCard="archive"
+                data={data?.data?.filter((task) => task.status == "archive")}
+              />
             </Grid>
           </Grid>
         </DragDropContext>

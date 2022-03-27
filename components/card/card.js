@@ -2,12 +2,16 @@ import AddIcon from "./addicons.js";
 import style from "../../styles/Home.module.css";
 import { Box } from "@mui/material";
 import Item from "../item/item.js";
-import { Fragment } from "react";
+import AddModule from "./addModule.js";
+
+import { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function Card(props) {
-  const { bcolor, id, data } = props;
-
+  const { bcolor, idCard, data } = props;
+  const [openAdd, setOpenAdd] = useState(false);
+  const [titleAdd, setTitleAdd] = useState("");
+  const [desAdd, setDesAdd] = useState("");
   const getListStyle = () => ({
     width: "100%",
   });
@@ -29,10 +33,10 @@ function Card(props) {
           <p className={style.cardDescription}>Description here </p>
         </div>
         <div className={style.iconContainer}>
-          <AddIcon color="white" />
+          <AddIcon color="white" onClick={() => setOpenAdd(true)} />
         </div>
       </Box>
-      <Droppable droppableId={`${id}`}>
+      <Droppable droppableId={`${idCard}`}>
         {(provided, snapshot) => (
           <div
             {...provided.droppableProps}
@@ -47,12 +51,8 @@ function Card(props) {
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
-                      // style={getItemStyle(
-                      //   snapshot.isDragging,
-                      //   provided.draggableProps.style
-                      // )}
                     >
-                      <Item data={item.content} />
+                      <Item data={item} />
                     </div>
                   )}
                 </Draggable>
@@ -62,6 +62,7 @@ function Card(props) {
           </div>
         )}
       </Droppable>
+      <AddModule open={openAdd} setOpen={setOpenAdd} />
     </div>
   );
 }
