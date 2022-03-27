@@ -1,7 +1,9 @@
 import "../styles/globals.css";
 import Head from "next/head";
+import { resetServerContext } from "react-beautiful-dnd";
 
 function MyApp({ Component, pageProps }) {
+  resetServerContext();
   return (
     <>
       <Head>
@@ -14,5 +16,4 @@ function MyApp({ Component, pageProps }) {
     </>
   );
 }
-
 export default MyApp;

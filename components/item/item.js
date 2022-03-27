@@ -4,7 +4,7 @@ import style from "../../styles/Home.module.css";
 import { Popover, Typography, Box } from "@mui/material";
 import { useState } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-export default function Item(props) {
+export default function Item({ data }) {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -18,9 +18,7 @@ export default function Item(props) {
   return (
     <>
       <div className={style.cardTextCont}>
-        <span className={style.itemText}>
-          dasdas safafa dfdf sdgsg sdgsdgs gsgsg sgsdgsg sgs gsdgsd
-        </span>
+        <span className={style.itemText}>{data}</span>
         <MoreVertIcon className={style.cardDots} onClick={handleClick} />
         <Popover
           open={open}
