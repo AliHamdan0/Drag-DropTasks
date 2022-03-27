@@ -1,7 +1,7 @@
 import { Modal } from "@mui/material";
 import { useState } from "react";
 import style from "../../styles/Home.module.css";
-import { Task } from "../../helpers/endPoints";
+import { Tasks } from "../../helpers/endPoints";
 import axios from "axios";
 export default function AddModule(props) {
   const { open, setOpen } = props;
@@ -11,12 +11,16 @@ export default function AddModule(props) {
   const handleAddTask = () => {
     setLoading(true);
     axios
-      .post(Task, {
+      .post(Tasks, {
         title: titleAdd,
         subject: desAdd,
       })
       .then((res) => {
         setLoading(false);
+        setTitleAdd("");
+        setDesAdd("");
+        setOpen(false);
+
         console.log("resPost", res);
       });
   };
