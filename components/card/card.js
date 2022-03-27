@@ -29,12 +29,14 @@ function Card(props) {
     <div className={style.cardCont}>
       <Box className={style.cardHead} sx={{ color: `${bcolor}` }}>
         <div>
-          <h6 className={style.cardTitle}>Doing</h6>
+          <h6 className={style.cardTitle}>{idCard}</h6>
           <p className={style.cardDescription}>Description here </p>
         </div>
-        <div className={style.iconContainer}>
-          <AddIcon color="white" onClick={() => setOpenAdd(true)} />
-        </div>
+        {idCard == "todo" && (
+          <div className={style.iconContainer}>
+            <AddIcon color="white" onClick={() => setOpenAdd(true)} />
+          </div>
+        )}
       </Box>
       <Droppable droppableId={`${idCard}`}>
         {(provided, snapshot) => (
@@ -52,7 +54,7 @@ function Card(props) {
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      <Item data={item} />
+                      <Item data={item?.content} />
                     </div>
                   )}
                 </Draggable>

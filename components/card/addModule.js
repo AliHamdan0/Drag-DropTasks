@@ -11,7 +11,7 @@ export default function AddModule(props) {
   const handleAddTask = () => {
     setLoading(true);
     axios
-      .post(PostTask, {
+      .post(Task, {
         title: titleAdd,
         subject: desAdd,
       })

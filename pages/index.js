@@ -130,28 +130,28 @@ export default function Home() {
               <Card
                 bcolor={checkColor("todo")}
                 idCard="todo"
-                data={data?.data?.filter((task) => task.status == "todo")}
+                data={cardData.cardOne}
               />
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Card
                 bcolor={checkColor("doing")}
                 idCard="doing"
-                data={data?.data?.filter((task) => task.status == "doing")}
+                data={cardData.cardTwo}
               />
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Card
                 bcolor={checkColor("done")}
                 idCard="done"
-                data={data?.data?.filter((task) => task.status == "done")}
+                data={cardData.cardThree}
               />
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Card
                 bcolor={checkColor("archive")}
                 idCard="archive"
-                data={data?.data?.filter((task) => task.status == "archive")}
+                data={cardData.cardFour}
               />
             </Grid>
           </Grid>
