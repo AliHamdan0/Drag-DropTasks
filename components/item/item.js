@@ -5,13 +5,14 @@ import { Popover, Typography, Box } from "@mui/material";
 import { useState } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import EditModule from "../card/EditModule.js";
-import DeleteTask from "../card/deleteDialog";
+import { DeleteTask } from "../card/deleteDialog";
 export default function Item({ data }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openEdit, setOpenEdit] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const [titleAdd, setTitleAdd] = useState("");
   const [desAdd, setDesAdd] = useState("");
+  const [loadDelete, setLoadDelete] = useState(false);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -48,7 +49,13 @@ export default function Item({ data }) {
           }}
         >
           <div>
-            <div className={style.optionCont} onClick={DeleteTask}>
+            <div
+              className={style.optionCont}
+              onClick={() => {
+                handleClose();
+                DeleteTask(data._id, setLoadDelete);
+              }}
+            >
               <Typography
                 variant="body2"
                 component="span"
