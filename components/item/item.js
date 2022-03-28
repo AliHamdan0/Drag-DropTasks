@@ -29,7 +29,7 @@ export default function Item({ data }) {
         <div>
           <span
             className={style.itemText}
-            onClick={Router.push(`/tasks/${data._id}`)}
+            onClick={() => Router.push(`/tasks/${data._id}`)}
           >
             {data?.title}
           </span>
