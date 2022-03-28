@@ -6,6 +6,12 @@ function Detail({ data }) {
   const Router = useRouter();
   return (
     <div>
+      <Head>
+        <title>Task Details</title>
+        <meta charSet="UTF-8" />
+        <meta name="description" content="Tasks Details" />
+        <meta name="keywords" content="React, Next, JavaScript" />
+      </Head>
       <h1 className={style.mainTitle}>Todo List</h1>
       <div className={style.detailParCont}>
         <h4 className={style.subTitleDetail}>Task Details</h4>

@@ -7,6 +7,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import EditModule from "../card/EditModule.js";
 import { DeleteTask } from "../card/deleteDialog";
 import { useRouter } from "next/router";
+import Link from "next/link";
 export default function Item({ data, refetch }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openEdit, setOpenEdit] = useState(false);
@@ -27,16 +28,17 @@ export default function Item({ data, refetch }) {
     <>
       <div className={style.cardTextCont}>
         <div>
-          <span
-            className={style.itemText}
-            style={{ cursor: "pointer" }}
-            onClick={() => Router.push(`/tasks/${data._id}`)}
-          >
-            {data?.title}
-          </span>
+          <Link href={`/tasks/${data._id}`} passhref>
+            <a
+              className={style.itemText}
+              style={{ cursor: "pointer", textDecoration: "none" }}
+            >
+              {data?.title}
+            </a>
+          </Link>
           <p
             className={style.itemText}
-            style={{ margin: "2px 0px", fontSize: "14px" }}
+            style={{ margin: "2px 0px", fontSize: "14px", color: "#000000d9" }}
           >
             {data?.subject}
           </p>

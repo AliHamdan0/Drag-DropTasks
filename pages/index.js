@@ -129,6 +129,12 @@ export default function Home(props) {
   console.log("data", data?.data);
   return (
     <div>
+      <Head>
+        <title>Tasks Home</title>
+        <meta charSet="UTF-8" />
+        <meta name="description" content="Tasks" />
+        <meta name="keywords" content="React, Next, JavaScript" />
+      </Head>
       <h1 className={style.mainTitle}>Todo List</h1>
       <Container maxWidth="xl">
         <DragDropContext onDragEnd={onDragEnd}>
