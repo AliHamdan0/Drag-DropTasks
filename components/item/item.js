@@ -7,7 +7,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import EditModule from "../card/EditModule.js";
 import { DeleteTask } from "../card/deleteDialog";
 import { useRouter } from "next/router";
-export default function Item({ data }) {
+export default function Item({ data, refetch }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openEdit, setOpenEdit] = useState(false);
   const [titleEdit, setTitleEdit] = useState(data?.title);
@@ -60,7 +60,7 @@ export default function Item({ data }) {
               className={style.optionCont}
               onClick={() => {
                 handleClose();
-                DeleteTask(data._id, setLoadDelete);
+                DeleteTask(data._id, setLoadDelete, refetch);
               }}
             >
               <Typography
@@ -102,6 +102,7 @@ export default function Item({ data }) {
         setTitle={setTitleEdit}
         description={desEdit}
         setDiscription={setDesEdit}
+        refetch={refetch}
       />
     </>
   );

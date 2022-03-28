@@ -8,7 +8,7 @@ import { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function Card(props) {
-  const { bcolor, idCard, data } = props;
+  const { bcolor, idCard, data, refetch } = props;
   const [openAdd, setOpenAdd] = useState(false);
   const [titleAdd, setTitleAdd] = useState("");
   const [desAdd, setDesAdd] = useState("");
@@ -54,7 +54,7 @@ function Card(props) {
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      <Item data={item} />
+                      <Item data={item} refetch={refetch} />
                     </div>
                   )}
                 </Draggable>
@@ -64,7 +64,7 @@ function Card(props) {
           </div>
         )}
       </Droppable>
-      <AddModule open={openAdd} setOpen={setOpenAdd} />
+      <AddModule open={openAdd} setOpen={setOpenAdd} refetch={refetch} />
     </div>
   );
 }

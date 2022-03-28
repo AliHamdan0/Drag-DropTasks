@@ -14,6 +14,7 @@ export default function EditModule(props) {
     setTitle,
     description,
     setDiscription,
+    refetch,
   } = props;
   const [loading, setLoading] = useState(false);
   const handleEditTask = () => {
@@ -27,8 +28,7 @@ export default function EditModule(props) {
       .then((res) => {
         setLoading(false);
         setOpen(false);
-
-        console.log("resPUt", res);
+        refetch();
       });
   };
   return (

@@ -4,7 +4,7 @@ import style from "../../styles/Home.module.css";
 import { Tasks } from "../../helpers/endPoints";
 import axios from "axios";
 export default function AddModule(props) {
-  const { open, setOpen } = props;
+  const { open, setOpen, refetch } = props;
   const [titleAdd, setTitleAdd] = useState("");
   const [desAdd, setDesAdd] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,8 +20,7 @@ export default function AddModule(props) {
         setTitleAdd("");
         setDesAdd("");
         setOpen(false);
-
-        console.log("resPost", res);
+        refetch();
       });
   };
   return (

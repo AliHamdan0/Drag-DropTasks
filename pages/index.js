@@ -7,15 +7,16 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Tasks, ModTask } from "../helpers/endPoints";
 import { useQuery } from "react-query";
 import axios from "axios";
-import { resetServerContext } from "react-beautiful-dnd";
-export default function Home({ data }) {
+export default function Home(props) {
   const [cardData, setCardData] = useState(null);
-  const { isLoading, isFetching, isError, error } = useQuery(
+  const { data, isLoading, isFetching, isError, error, refetch } = useQuery(
     "Tasks",
     () => {
       return axios.get(Tasks);
     },
     {
+      initialData: props.tasks,
+      refetchOnMount: true,
       onSuccess: (data) => {
         setCardData({
           cardOne: data?.data?.filter((task) => task.status == "todo"),
@@ -36,7 +37,7 @@ export default function Home({ data }) {
         status: newStatus,
       })
       .then((res) => {
-        console.log("ss", res);
+        refetch();
       });
   };
   const getCardPropert = (id) => {
@@ -138,6 +139,7 @@ export default function Home({ data }) {
                   bcolor={checkColor("todo")}
                   idCard="todo"
                   data={cardData.cardOne}
+                  refetch={refetch}
                 />
               </Grid>
               <Grid item xs={12} md={4} lg={3}>
@@ -145,6 +147,7 @@ export default function Home({ data }) {
                   bcolor={checkColor("doing")}
                   idCard="doing"
                   data={cardData.cardTwo}
+                  refetch={refetch}
                 />
               </Grid>
               <Grid item xs={12} md={4} lg={3}>
@@ -152,6 +155,7 @@ export default function Home({ data }) {
                   bcolor={checkColor("done")}
                   idCard="done"
                   data={cardData.cardThree}
+                  refetch={refetch}
                 />
               </Grid>
               <Grid item xs={12} md={4} lg={3}>
@@ -159,6 +163,7 @@ export default function Home({ data }) {
                   bcolor={checkColor("archive")}
                   idCard="archive"
                   data={cardData.cardFour}
+                  refetch={refetch}
                 />
               </Grid>
             </Grid>
@@ -169,12 +174,11 @@ export default function Home({ data }) {
   );
 }
 export async function getStatisProps() {
-  resetServerContext();
   const res = await fetch(Tasks);
   const data = await res.json();
   return {
     props: {
-      data: data || "",
+      tasks: data || "",
     },
   };
 }

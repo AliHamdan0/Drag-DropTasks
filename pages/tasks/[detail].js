@@ -1,6 +1,5 @@
 import style from "../../styles/detail.module.css";
 import { TasksDetails, Tasks } from "../../helpers/endPoints";
-import { resetServerContext } from "react-beautiful-dnd";
 import { Typography } from "@mui/material";
 import { useRouter } from "next/router";
 function Detail({ data }) {
@@ -50,7 +49,6 @@ function Detail({ data }) {
 export default Detail;
 
 export async function getStaticProps(context) {
-  resetServerContext();
   const id = context.params.detail;
   const res = await fetch(TasksDetails(id));
   const data = await res.json();

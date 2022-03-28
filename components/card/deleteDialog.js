@@ -1,13 +1,12 @@
 import Swal from "sweetalert2";
 import { ModTask } from "../../helpers/endPoints";
 import axios from "axios";
-import { useState } from "react";
-export function DeleteTask(id, setLoading) {
+export function DeleteTask(id, setLoading, refetch) {
   const handleDelete = () => {
     setLoading(true);
     axios.delete(ModTask(id)).then((res) => {
       setLoading(false);
-      console.log("deleEtask", res);
+      refetch();
     });
   };
   return Swal.fire({
@@ -20,7 +19,6 @@ export function DeleteTask(id, setLoading) {
     confirmButtonText: "Yes, delete it!",
   }).then((result) => {
     if (result.isConfirmed) {
-      // Swal.fire("Deleted!", "Your Task has been deleted.", "success");
       handleDelete();
     }
   });
