@@ -1,5 +1,4 @@
 .mainTitle {
-  font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 48px;
@@ -27,7 +26,6 @@
   padding: 25px;
 }
 .subTitleDetail {
-  font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 48px;
@@ -44,7 +42,6 @@
   }
 }
 .detailSect {
-  font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -57,7 +54,6 @@
   margin-bottom: 8px;
 }
 .detailCont {
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

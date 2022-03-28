@@ -1,5 +1,4 @@
 .mainTitle {
-  font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 48px;
@@ -21,7 +20,6 @@
   border-radius: 16px;
 }
 .cardTitle {
-  font-family: "Open Sans";
   font-style: normal;
   font-weight: 800;
   font-size: 24px;
@@ -31,7 +29,6 @@
   margin: 8px 0px;
 }
 .cardDescription {
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
@@ -73,7 +70,6 @@
   align-items: flex-start;
 }
 .itemText {
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -91,7 +87,6 @@
   cursor: pointer;
 }
 .optionitemText {
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -129,7 +124,6 @@
   }
 }
 .titleModule {
-  font-family: "Open Sans";
   font-style: normal;
   font-weight: 800;
   font-size: 24px;
