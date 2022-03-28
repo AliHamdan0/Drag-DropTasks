@@ -29,6 +29,7 @@ export default function Item({ data }) {
         <div>
           <span
             className={style.itemText}
+            style={{ cursor: "pointer" }}
             onClick={() => Router.push(`/tasks/${data._id}`)}
           >
             {data?.title}

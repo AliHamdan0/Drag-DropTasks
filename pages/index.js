@@ -7,9 +7,10 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Tasks, ModTask } from "../helpers/endPoints";
 import { useQuery } from "react-query";
 import axios from "axios";
-export default function Home() {
+import { resetServerContext } from "react-beautiful-dnd";
+export default function Home({ data }) {
   const [cardData, setCardData] = useState(null);
-  const { isLoading, isFetching, data, isError, error } = useQuery(
+  const { isLoading, isFetching, isError, error } = useQuery(
     "Tasks",
     () => {
       return axios.get(Tasks);
@@ -166,4 +167,14 @@ export default function Home() {
       </Container>
     </div>
   );
+}
+export async function getStatisProps() {
+  resetServerContext();
+  const res = await fetch(Tasks);
+  const data = await res.json();
+  return {
+    props: {
+      data: data || "",
+    },
+  };
 }
