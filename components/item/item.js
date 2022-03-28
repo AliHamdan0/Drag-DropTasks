@@ -9,9 +9,8 @@ import { DeleteTask } from "../card/deleteDialog";
 export default function Item({ data }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openEdit, setOpenEdit] = useState(false);
-  const [openDelete, setOpenDelete] = useState(false);
-  const [titleAdd, setTitleAdd] = useState("");
-  const [desAdd, setDesAdd] = useState("");
+  const [titleEdit, setTitleEdit] = useState(data?.title);
+  const [desEdit, setDesEdit] = useState(data?.subject);
   const [loadDelete, setLoadDelete] = useState(false);
 
   const handleClick = (event) => {
@@ -66,7 +65,13 @@ export default function Item({ data }) {
               </Typography>
               <DeleteIcon />
             </div>
-            <div className={style.optionCont} onClick={() => setOpenEdit(true)}>
+            <div
+              className={style.optionCont}
+              onClick={() => {
+                handleClose();
+                setOpenEdit(true);
+              }}
+            >
               <Typography
                 variant="body2"
                 component="span"
@@ -83,10 +88,12 @@ export default function Item({ data }) {
       <EditModule
         open={openEdit}
         setOpen={setOpenEdit}
-        title={titleAdd}
-        setTitle={setTitleAdd}
-        description={desAdd}
-        setDiscription={setDesAdd}
+        ID={data._id}
+        status={data.status}
+        title={titleEdit}
+        setTitle={setTitleEdit}
+        description={desEdit}
+        setDiscription={setDesEdit}
       />
     </>
   );

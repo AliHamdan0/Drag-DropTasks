@@ -4,7 +4,7 @@ import Card from "../components/card/card";
 import { useState } from "react";
 import { Grid, Container } from "@mui/material";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { Tasks } from "../helpers/endPoints";
+import { Tasks, ModTask } from "../helpers/endPoints";
 import { useQuery } from "react-query";
 import axios from "axios";
 export default function Home() {
@@ -25,7 +25,19 @@ export default function Home() {
       },
     }
   );
-
+  const updateStatus = (data, sourceTasks, droppableSource) => {
+    const newStatus = data?.droppableId;
+    const [removed] = sourceTasks.splice(droppableSource.index, 1);
+    axios
+      .patch(ModTask(removed._id), {
+        title: removed.title,
+        subject: removed.subject,
+        status: newStatus,
+      })
+      .then((res) => {
+        console.log("ss", res);
+      });
+  };
   const getCardPropert = (id) => {
     if (id == "todo") return "cardOne";
     else if (id == "doing") return "cardTwo";
@@ -89,7 +101,7 @@ export default function Home() {
         source,
         destination
       );
-
+      updateStatus(destination, getList(source.droppableId), source);
       setCardData({
         // update entire state
         ...cardData,

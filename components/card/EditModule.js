@@ -1,8 +1,36 @@
 import { Modal } from "@mui/material";
 import style from "../../styles/Home.module.css";
-export default function EditModule(props) {
-  const { open, setOpen, title, setTitle, description, setDiscription } = props;
+import { ModTask } from "../../helpers/endPoints";
+import axios from "axios";
+import { useState } from "react";
 
+export default function EditModule(props) {
+  const {
+    open,
+    setOpen,
+    ID,
+    status,
+    title,
+    setTitle,
+    description,
+    setDiscription,
+  } = props;
+  const [loading, setLoading] = useState(false);
+  const handleEditTask = () => {
+    setLoading(true);
+    axios
+      .patch(ModTask(ID), {
+        title: title,
+        subject: description,
+        status: status,
+      })
+      .then((res) => {
+        setLoading(false);
+        setOpen(false);
+
+        console.log("resPUt", res);
+      });
+  };
   return (
     <div>
       <Modal
@@ -36,7 +64,12 @@ export default function EditModule(props) {
             onChange={(e) => setDiscription(e.target.value)}
             className={style.moduleArea}
           />
-          <button className={style.addModButton}>Edit</button>
+          <button
+            className={style.addModButton}
+            onClick={() => handleEditTask()}
+          >
+            Edit
+          </button>
         </div>
       </Modal>
     </div>
