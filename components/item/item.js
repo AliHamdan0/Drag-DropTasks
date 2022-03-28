@@ -6,12 +6,14 @@ import { useState } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import EditModule from "../card/EditModule.js";
 import { DeleteTask } from "../card/deleteDialog";
+import { useRouter } from "next/router";
 export default function Item({ data }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openEdit, setOpenEdit] = useState(false);
   const [titleEdit, setTitleEdit] = useState(data?.title);
   const [desEdit, setDesEdit] = useState(data?.subject);
   const [loadDelete, setLoadDelete] = useState(false);
+  const Router = useRouter();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -25,7 +27,12 @@ export default function Item({ data }) {
     <>
       <div className={style.cardTextCont}>
         <div>
-          <span className={style.itemText}>{data?.title}</span>
+          <span
+            className={style.itemText}
+            onClick={Router.push(`/tasks/${data._id}`)}
+          >
+            {data?.title}
+          </span>
           <p
             className={style.itemText}
             style={{ margin: "2px 0px", fontSize: "14px" }}
