@@ -2,8 +2,16 @@ import style from "../../styles/detail.module.css";
 import { TasksDetails, Tasks } from "../../helpers/endPoints";
 import { Typography } from "@mui/material";
 import { useRouter } from "next/router";
+import CustomLoader from "../../components/customLoader";
+import Head from "next/head";
 function Detail({ data }) {
   const Router = useRouter();
+  if (Router.isFallback)
+    return (
+      <div className="loaderContainer">
+        <CustomLoader />
+      </div>
+    );
   return (
     <div>
       <Head>
@@ -55,7 +63,7 @@ function Detail({ data }) {
 export default Detail;
 
 export async function getStaticProps(context) {
-  const id = context.params.detail;
+  const id = context.params.id;
   const res = await fetch(TasksDetails(id));
   const data = await res.json();
   return {
@@ -69,7 +77,7 @@ export async function getStaticPaths() {
   const tasks = await res.json();
 
   const paths = tasks.map((task) => ({
-    params: { detail: task._id },
+    params: { id: task._id },
   }));
   return { paths, fallback: true };
 }

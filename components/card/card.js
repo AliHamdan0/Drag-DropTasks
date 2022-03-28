@@ -3,28 +3,13 @@ import style from "../../styles/Home.module.css";
 import { Box } from "@mui/material";
 import Item from "../item/item.js";
 import AddModule from "./addModule.js";
-
 import { useState } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { Droppable, Draggable } from "react-beautiful-dnd";
 
 function Card(props) {
   const { bcolor, idCard, data, refetch } = props;
   const [openAdd, setOpenAdd] = useState(false);
-  const [titleAdd, setTitleAdd] = useState("");
-  const [desAdd, setDesAdd] = useState("");
-  const getListStyle = () => ({
-    width: "100%",
-  });
-  const getItemStyle = (isDragging, draggableStyle) => ({
-    // some basic styles to make the items look a bit nicer
-    userSelect: "none",
 
-    // change background colour if dragging
-    background: isDragging ? "lightgreen" : "grey",
-
-    // styles we need to apply on draggables
-    ...draggableStyle,
-  });
   return (
     <div className={style.cardCont}>
       <Box className={style.cardHead} sx={{ color: `${bcolor}` }}>

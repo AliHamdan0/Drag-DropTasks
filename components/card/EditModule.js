@@ -1,4 +1,4 @@
-import { Modal } from "@mui/material";
+import { Modal, CircularProgress } from "@mui/material";
 import style from "../../styles/Home.module.css";
 import { ModTask } from "../../helpers/endPoints";
 import axios from "axios";
@@ -69,6 +69,9 @@ export default function EditModule(props) {
             onClick={() => handleEditTask()}
           >
             Edit
+            {loading == true && (
+              <CircularProgress sx={{ color: "white", ml: "8px" }} size={20} />
+            )}
           </button>
         </div>
       </Modal>

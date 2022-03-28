@@ -7,6 +7,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Tasks, ModTask } from "../helpers/endPoints";
 import { useQuery } from "react-query";
 import axios from "axios";
+import CustomLoader from "../components/customLoader";
 export default function Home(props) {
   const [cardData, setCardData] = useState(null);
   const { data, isLoading, isFetching, isError, error, refetch } = useQuery(
@@ -16,7 +17,6 @@ export default function Home(props) {
     },
     {
       initialData: props.tasks,
-      refetchOnMount: true,
       onSuccess: (data) => {
         setCardData({
           cardOne: data?.data?.filter((task) => task.status == "todo"),
@@ -125,8 +125,12 @@ export default function Home(props) {
         return "black";
     }
   };
-  console.log("finalResult", cardData);
-  console.log("data", data?.data);
+  if (isLoading)
+    return (
+      <div className="loaderContainer">
+        <CustomLoader />
+      </div>
+    );
   return (
     <div>
       <Head>

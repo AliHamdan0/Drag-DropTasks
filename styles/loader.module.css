@@ -1,0 +1,147 @@
+.container {
+  height: 50px;
+  margin: 0 auto;
+  position: relative;
+  width: 434px;
+  filter: url("#goo");
+  -webkit-filter: url("#goo");
+}
+.center,
+.dot {
+  background-color: #ffd17d;
+  border-radius: 50%;
+  position: absolute;
+}
+.center {
+  height: 50px;
+  margin-left: -25px;
+  left: 50%;
+  width: 50px;
+  z-index: 2;
+}
+.dot {
+  height: 24px;
+  width: 24px;
+  top: 50%;
+  margin-top: -12px;
+}
+
+.uno {
+  animation: uno 4s cubic-bezier(0.53, 0.38, 0.37, 1) infinite;
+  left: 0;
+}
+@keyframes uno {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(205px, 0, 0);
+  }
+  50% {
+    transform: translate3d(292px, 0, 0);
+  }
+  65% {
+    transform: translate3d(205px, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.dos {
+  animation: dos 4s cubic-bezier(0.53, 0.38, 0.37, 1) infinite;
+  left: 59px;
+}
+@keyframes dos {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    transform: translate3d(146px, 0, 0);
+  }
+  50% {
+    transform: translate3d(292px, 0, 0);
+  }
+  70% {
+    transform: translate3d(146px, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.tres {
+  animation: tres 4s cubic-bezier(0.53, 0.38, 0.37, 1) infinite;
+  left: 118px;
+}
+@keyframes tres {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  15% {
+    transform: translate3d(88px, 0, 0);
+  }
+  50% {
+    transform: translate3d(292px, 0, 0);
+  }
+  75% {
+    transform: translate3d(88px, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.center {
+  animation: scaling 6s ease-in-out 0.2s infinite;
+}
+@keyframes scaling {
+  0% {
+    transform: scale(1);
+  }
+  12% {
+    transform: scale(1.2);
+  }
+  20% {
+    transform: scale(0.8);
+  }
+  21% {
+    transform: scale(1.1);
+  }
+  22% {
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.2);
+  }
+  53% {
+    transform: scale(0.8);
+  }
+  54% {
+    transform: scale(1.1);
+  }
+  55% {
+    transform: scale(1);
+  }
+  65% {
+    transform: scale(1);
+  }
+  77% {
+    transform: scale(1.2);
+  }
+  87% {
+    transform: scale(0.8);
+  }
+  88% {
+    transform: scale(1.1);
+  }
+  89% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

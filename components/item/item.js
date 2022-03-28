@@ -28,7 +28,7 @@ export default function Item({ data, refetch }) {
     <>
       <div className={style.cardTextCont}>
         <div>
-          <Link href={`/tasks/${data._id}`} passhref>
+          <Link href={`/todos/${data._id}`} passhref>
             <a
               className={style.itemText}
               style={{ cursor: "pointer", textDecoration: "none" }}

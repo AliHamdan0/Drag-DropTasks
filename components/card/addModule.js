@@ -1,4 +1,4 @@
-import { Modal } from "@mui/material";
+import { Modal, CircularProgress } from "@mui/material";
 import { useState } from "react";
 import style from "../../styles/Home.module.css";
 import { Tasks } from "../../helpers/endPoints";
@@ -61,6 +61,9 @@ export default function AddModule(props) {
             onClick={(e) => handleAddTask()}
           >
             Add
+            {loading == true && (
+              <CircularProgress sx={{ color: "white", ml: "8px" }} size={20} />
+            )}
           </button>
         </div>
       </Modal>
