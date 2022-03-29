@@ -63,6 +63,8 @@
   letter-spacing: 0.04em;
   color: #000000;
   margin: 0px;
+  display: flex;
+  align-items: baseline;
 }
 .detailButton {
   display: flex;
@@ -71,7 +73,7 @@
   padding: 10px;
   background: #1695bd;
   border-radius: 16px;
-  border: none;
+  border: 1px solid transparent;
   width: 109px;
   height: 45px;
   color: white;
@@ -80,6 +82,11 @@
   cursor: pointer;
   margin-top: 25px;
   margin-left: auto;
+}
+.detailButton:hover {
+  color: #1695bd;
+  background-color: transparent;
+  border-color: #1695bd;
 }
 .detailParCont {
   padding: 0px 1%;

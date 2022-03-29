@@ -36,6 +36,7 @@ function Detail({ data }) {
             <h6 className={style.detailSect}>Status</h6>
             <p className={style.detailCont}>
               <Typography
+                variant="body2"
                 component="span"
                 className={style.spanTask}
                 sx={{
@@ -70,6 +71,7 @@ export async function getStaticProps(context) {
     props: {
       data: data || "",
     },
+    revalidate: 60 * 60 * 24, //Every day we update the information on server by rebuilding
   };
 }
 export async function getStaticPaths() {

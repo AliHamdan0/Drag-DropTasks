@@ -190,5 +190,6 @@ export async function getStatisProps() {
     props: {
       tasks: data || "",
     },
+    revalidate: 60 * 60 * 24, //Every day we update the information on server by rebuilding
   };
 }
