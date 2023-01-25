@@ -1,10 +1,10 @@
-import AddIcon from "./addicons.js";
-import style from "../../styles/Home.module.css";
-import { Box } from "@mui/material";
-import Item from "../item/item.js";
-import AddModule from "./addModule.js";
-import { useState } from "react";
-import { Droppable, Draggable } from "react-beautiful-dnd";
+import AddIcon from './addicons.js';
+import style from '../../styles/Home.module.css';
+import { Box } from '@mui/material';
+import Item from '../item/item.js';
+import AddModule from './addModule.js';
+import { useState } from 'react';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 
 function Card(props) {
   const { bcolor, idCard, data, refetch } = props;
@@ -17,9 +17,9 @@ function Card(props) {
           <h6 className={style.cardTitle}>{idCard}</h6>
           <p className={style.cardDescription}>Description here </p>
         </div>
-        {idCard == "todo" && (
+        {idCard == 'todo' && (
           <div className={style.iconContainer}>
-            <AddIcon color="white" onClick={() => setOpenAdd(true)} />
+            <AddIcon color='white' onClick={() => setOpenAdd(true)} />
           </div>
         )}
       </Box>
@@ -28,7 +28,7 @@ function Card(props) {
           <div
             {...provided.droppableProps}
             ref={provided.innerRef}
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
           >
             {data?.map((item, index) => {
               return (
